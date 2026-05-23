@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CST Leadership Team — PT. Carya Solusi Teknologi</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #060C18;
+    --deep: #0B1425;
+    --steel: #152035;
+    --cyan: #00C8E0;
+    --cyan-dim: rgba(0,200,224,0.1);
+    --orange: #FF9900;
+    --white: #EEF4FB;
+    --gray: #7A8FA6;
+    --blue: #1A5FB4;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--navy);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* Grid background */
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(0,200,224,0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,200,224,0.03) 1px, transparent 1px);
+    background-size: 50px 50px;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 3rem 2rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* ── HEADER ── */
+  .header {
+    text-align: center;
+    margin-bottom: 4rem;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .header-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 1rem;
+  }
+
+  .header-tag::before,
+  .header-tag::after {
+    content: '';
+    display: block;
+    width: 24px;
+    height: 1px;
+    background: var(--cyan);
+  }
+
+  .header h1 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.5rem, 7vw, 5rem);
+    letter-spacing: 0.04em;
+    line-height: 1;
+    margin-bottom: 0.8rem;
+  }
+
+  .header h1 span { color: var(--cyan); }
+
+  .header p {
+    color: var(--gray);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+  }
+
+  .header-line {
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(to right, var(--cyan), var(--orange));
+    margin: 1.5rem auto 0;
+  }
+
+  /* ── PROFILE CARD ── */
+  .profile {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 2.5rem;
+    margin-bottom: 2px;
+    background: var(--deep);
+    border: 1px solid rgba(0,200,224,0.08);
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.4s, transform 0.3s;
+    animation: fadeUp 0.8s ease both;
+  }
+
+  .profile:nth-child(1) { animation-delay: 0.1s; }
+  .profile:nth-child(2) { animation-delay: 0.2s; }
+  .profile:nth-child(3) { animation-delay: 0.3s; }
+
+  .profile::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px; height: 100%;
+    background: linear-gradient(to bottom, var(--cyan), transparent);
+    transform: scaleY(0);
+    transform-origin: top;
+    transition: transform 0.4s;
+  }
+
+  .profile:hover {
+    border-color: rgba(0,200,224,0.25);
+    transform: translateX(4px);
+  }
+
+  .profile:hover::before { transform: scaleY(1); }
+
+  /* ── AVATAR SIDE ── */
+  .profile-left { display: flex; flex-direction: column; align-items: center; gap: 1.5rem; }
+
+  .avatar {
+    width: 110px;
+    height: 110px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--blue), var(--cyan));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.2rem;
+    letter-spacing: 0.05em;
+    color: white;
+    position: relative;
+    flex-shrink: 0;
+  }
+
+  .avatar::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,200,224,0.3);
+  }
+
+  .tags {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    width: 100%;
+  }
+
+  .tag {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gray);
+    padding: 0.35rem 0.6rem;
+    background: rgba(0,200,224,0.05);
+    border: 1px solid rgba(0,200,224,0.1);
+    transition: color 0.3s, border-color 0.3s;
+  }
+
+  .tag::before {
+    content: '◆';
+    color: var(--cyan);
+    font-size: 0.45rem;
+    flex-shrink: 0;
+  }
+
+  .profile:hover .tag {
+    color: var(--white);
+    border-color: rgba(0,200,224,0.2);
+  }
+
+  /* ── CONTENT SIDE ── */
+  .profile-right {}
+
+  .profile-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 0.04em;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+    color: var(--white);
+  }
+
+  .profile-title {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 0.3rem;
+  }
+
+  .profile-edu {
+    font-size: 0.78rem;
+    color: var(--gray);
+    font-style: italic;
+    margin-bottom: 1.2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+  }
+
+  .profile-bio {
+    font-size: 0.88rem;
+    color: var(--gray);
+    line-height: 1.8;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    text-align: center;
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    animation: fadeUp 0.8s 0.5s ease both;
+  }
+
+  .footer-logo {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.2rem;
+    letter-spacing: 0.1em;
+    color: var(--white);
+    margin-bottom: 0.5rem;
+  }
+
+  .footer-logo span { color: var(--cyan); }
+
+  .footer p {
+    font-size: 0.75rem;
+    color: var(--gray);
+    letter-spacing: 0.05em;
+  }
+
+  .footer a {
+    color: var(--cyan);
+    text-decoration: none;
+  }
+
+  /* ── ANIMATIONS ── */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 680px) {
+    .profile {
+      grid-template-columns: 1fr;
+    }
+    .profile-left {
+      flex-direction: row;
+      align-items: flex-start;
+    }
+    .tags { flex-direction: row; flex-wrap: wrap; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- HEADER -->
+  <div class="header">
+    <div class="header-tag">PT. Carya Solusi Teknologi</div>
+    <h1>LEADERSHIP <span>&</span><br>KEY PERSONNEL</h1>
+    <p>Telecommunication Infrastructure · Construction · Logistics</p>
+    <div class="header-line"></div>
+  </div>
+
+  <!-- SUSENO WAHYU -->
+  <div class="profile">
+    <div class="profile-left">
+      <div class="avatar">SW</div>
+      <div class="tags">
+        <div class="tag">Telco Infrastructure</div>
+        <div class="tag">Operational Management</div>
+        <div class="tag">Project Execution</div>
+        <div class="tag">Technical Leadership</div>
+      </div>
+    </div>
+    <div class="profile-right">
+      <div class="profile-title">Operational Director</div>
+      <div class="profile-name">Suseno Wahyu Purnomo</div>
+      <div class="profile-edu">Bachelor of Electrical Engineering</div>
+      <p class="profile-bio">
+        Suseno brings extensive hands-on experience in Indonesia's telecommunications infrastructure sector, with a strong foundation in electrical engineering. Having spent years working within major Indonesian telecommunications operators, he developed deep expertise in the full lifecycle of network infrastructure — from planning and rollout through to maintenance and expansion. At CST, Suseno leads all operational activities, ensuring every project is executed with precision, on schedule, and to the highest technical standards. His direct industry relationships and ground-level operational knowledge make him a critical asset in delivering complex, multi-site projects such as the Amazon Project Kuiper Ground Gateway Terminal program.
+      </p>
+    </div>
+  </div>
+
+  <!-- SIGIT MARSONO -->
+  <div class="profile">
+    <div class="profile-left">
+      <div class="avatar">SM</div>
+      <div class="tags">
+        <div class="tag">Business Development</div>
+        <div class="tag">Strategic Partnerships</div>
+        <div class="tag">Telco Market</div>
+        <div class="tag">Client Relations</div>
+      </div>
+    </div>
+    <div class="profile-right">
+      <div class="profile-title">Marketing Director</div>
+      <div class="profile-name">Sigit Marsono</div>
+      <div class="profile-edu">Bachelor of Electrical Engineering</div>
+      <p class="profile-bio">
+        Sigit combines a technical background in electrical engineering with sharp commercial instincts developed over years in Indonesia's telecommunications industry. His experience working alongside major telco operators gave him a unique understanding of both the technical requirements and business dynamics of large-scale infrastructure projects. At CST, Sigit leads the company's growth strategy — identifying new project opportunities, building strategic partnerships, and managing relationships with key clients including tower companies, operators, and international technology partners. His ability to bridge the technical and commercial worlds is central to CST's positioning as a trusted contractor for high-profile projects.
+      </p>
+    </div>
+  </div>
+
+  <!-- NOVIYADI -->
+  <div class="profile">
+    <div class="profile-left">
+      <div class="avatar">NS</div>
+      <div class="tags">
+        <div class="tag">Civil Engineering</div>
+        <div class="tag">Construction Mgmt</div>
+        <div class="tag">Site Supervision</div>
+        <div class="tag">Quality Control</div>
+      </div>
+    </div>
+    <div class="profile-right">
+      <div class="profile-title">Project Manager</div>
+      <div class="profile-name">Noviyadi Setyawan</div>
+      <div class="profile-edu">Bachelor of Civil Engineering</div>
+      <p class="profile-bio">
+        Noviyadi brings a strong civil engineering background to CST's project management function, with expertise spanning construction planning, structural analysis, and on-site execution. His engineering discipline ensures that every project under his supervision adheres to structural integrity standards, safety protocols, and regulatory compliance. At CST, Noviyadi oversees the end-to-end delivery of construction projects — coordinating field teams, managing subcontractors, and ensuring that milestones are achieved on time and within specification. His methodical approach to project control has been instrumental in CST's ability to simultaneously execute projects across multiple locations in Indonesia.
+      </p>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <div class="footer-logo">PT. <span>CARYA</span> SOLUSI TEKNOLOGI</div>
+    <p>
+      <a href="https://caryasolusiteknologi.co.id">caryasolusiteknologi.co.id</a>
+      &nbsp;·&nbsp;
+      <a href="mailto:info@caryasolusiteknologi.co.id">info@caryasolusiteknologi.co.id</a>
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
